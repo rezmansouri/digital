@@ -15,20 +15,28 @@ branchOutput, memReadOutput, memToRegOutput, aluOpOutput, memWriteOutput, aluSrc
 
     //Based on the book's table, the controls array is assigned values to on the changes of opcode
     always @(opcode)
-    if (opcode == 7'b0110011) {
+    if (opcode == 7'b0110011)
       //The R Type Value for the required output signals are stored in the control array
       controls <= 8'b00100010;
-    } else if (opcode == 7'b0000011) {
+    else
+	  begin
+	  if (opcode == 7'b0000011)
       //The Load double word Value for the required output signals are stored in the control array
       controls <= 8'b11110000;
-    } else if (opcode == 7'b0100011) {
-      //The Store double word Value for the required output signals are stored in the control array
-      controls <= 8'b1x001000;
-    } else if (opcode == 7'b1100011) {
-      //The Branch on equal Value for the required output signals are stored in the control array
-      controls <= 8'b0x000101;
-    } else {
-      //The opcode is invalid here
-      controls <= 8'bxxxxxxxx;
-    }
+	  else
+	    begin
+        if (opcode == 7'b0100011)
+        //The Store double word Value for the required output signals are stored in the control array
+        controls <= 8'b1x001000;
+        else
+		  begin
+		  if (opcode == 7'b1100011)
+          //The Branch on equal Value for the required output signals are stored in the control array
+          controls <= 8'b0x000101;
+          else
+          //The opcode is invalid here
+          controls <= 8'bxxxxxxxx;
+	      end
+	    end
+	  end
 endmodule
