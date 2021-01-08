@@ -24,7 +24,7 @@ module SixtryFourBitFullAdderAndShiftRegister_tb;
   .sum (data),
   .carry_out(carry_out));
   
-  always #10 clock = ~clock;
+  ClockGenerator clockGenerator (.clock);
   
   initial begin
     clock <= 0;
