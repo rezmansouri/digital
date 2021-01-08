@@ -1,6 +1,6 @@
 //Reza Mansouri 972023033
 //i include the instruction memory module
-`include "instruction_memory.v
+`include "instructionMemory.v"
 module instructionMemoryTestBench;
   //i declare an 48 bit array
   reg address[47:0];

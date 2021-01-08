@@ -1,3 +1,4 @@
+//Reza Mansouri 972023033
 `include "../ClockGenerator/clockGenerator.v"
 `include "../Control/control.v"
 `include "ALUControl.v"
